@@ -1,0 +1,31 @@
+.home {
+  width: 100%;
+  margin-bottom: 15vh;
+  @include center;
+  flex-direction: column;
+  & > * {
+    margin: 3rem 0;
+  }
+
+  & h1 {
+    font-size: 2.5rem;
+  }
+}
+
+.actions {
+  width: 100%;
+  // padding: 2rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+button.primary {
+  background: $accent;
+  color: $primary;
+}
+
+button.secondary {
+  background: transparent;
+  color: $accent;
+  border: 1px solid $accent;
+}

@@ -1,0 +1,21 @@
+section.extra {
+  width: 100%;
+  margin: .5rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & .keepSession {
+    display: flex;
+    align-items: center;
+    // & input[type="checkbox"] {
+
+    // }
+    & label {
+      margin-left: .5rem;
+    }
+  }
+  & a {
+    font-size: .75rem;
+  }
+}
