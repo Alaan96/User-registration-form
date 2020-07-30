@@ -5,8 +5,12 @@
 
 // Components
 @import 'components/user-form';
+@import 'components/register-complete';
 
 // Views
 @import 'views/home';
 @import 'views/login';
 @import 'views/register';
+
+// Errors
+@import 'views/404';

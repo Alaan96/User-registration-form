@@ -15,7 +15,7 @@ form {
     font-size: .75rem;
     &[id^="form-info"] {
       color: $cancel;
-      // visibility: hidden;
+      visibility: hidden;
     }
   }
 }
@@ -29,9 +29,11 @@ form header {
 }
 
 form .text-field {
+  position: relative;
   & input[type="text"], input[type="email"], input[type="password"] {
     width: 100%;
     height: 2.5em;
+    padding-left: .25rem;
     font-size: 1rem;
     border: none;
     border-bottom: 1px solid rgba($secondary, .5);
@@ -45,8 +47,9 @@ form .text-field {
     background: rgba($secondary, .10);
     border-color: $accent;
   }
-
+  
   & input:not(:placeholder-shown):invalid {
+    background: rgba($cancel, .10);
     border-color: $cancel;
   }
 }
@@ -56,6 +59,7 @@ section.buttons {
   margin-top: 1.5rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   & button {
     width: 100%;
@@ -68,15 +72,62 @@ section.buttons {
       margin-bottom: .5rem;
       color: $primary;
       background: $accent;
+      &[disabled] {
+        filter: grayscale(.75);
+      }
     }
+  }
+  & a {
+    @include button;
+    width: 100%;
+    height: 2em;
   }
 }
 
 a.back {
   margin-top: 2rem;
-  background: transparent;
-  color: $primary;
+}
+
+// Password reveal button
+$icon-size: 1.5rem;
+button#password-reveal {
+  @include button-icon;
+  width: $icon-size;
+  height: $icon-size;
+  position: absolute;
+  top: 1.75rem;
+  right: .5rem;
+  opacity: .25;
+  & input[type="checkbox"] {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
   &:hover {
-    color: $accent;
+    opacity: .75;
+  }
+}
+
+svg#icon-eye {
+  & path {
+    fill: $secondary;
+    stroke: $secondary;
+  }
+  & circle {
+    fill: $secondary;
+    stroke: $primary;
+  }
+  & line {
+    fill: none;
+    stroke: $secondary;
+  }
+}
+
+svg.reveal {
+  opacity: 1;
+  & line {
+    opacity: 0;
   }
 }

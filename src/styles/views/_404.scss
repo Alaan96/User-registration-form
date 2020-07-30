@@ -1,0 +1,17 @@
+#error {
+  text-align: center;
+  & h1 {
+    font-size: 6rem;
+    font-weight: 600;
+    color: $primary;
+  }
+  
+  & h2 {
+    font-size: 3rem;
+    font-weight: 400;
+    color: $primary;
+  }
+  & p {
+    margin: 2rem 0;
+  }
+}

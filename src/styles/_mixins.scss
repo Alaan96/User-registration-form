@@ -3,3 +3,41 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin button {
+  width: 10rem;
+  height: 3rem;
+  @include center;
+  font-size: 1rem;
+  font-family: $open-sans;
+  font-weight: 600;
+  border: none;
+  border-radius: .5rem;
+  &:hover {
+    box-shadow: 0 0 .5rem $accent;
+  }
+  &:active {
+    box-shadow: 0 0 1rem $accent;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 .5rem $accent;
+  }
+  &[disabled] {
+    opacity: .5;
+  }
+}
+
+@mixin button-icon {
+  background: transparent;
+  &:hover {
+    box-shadow: none;
+  }
+  &:active {
+    box-shadow: none;
+  }
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}

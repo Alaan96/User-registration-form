@@ -1,4 +1,4 @@
-.home {
+section.home {
   width: 100%;
   margin-bottom: 15vh;
   @include center;
@@ -12,19 +12,20 @@
   }
 }
 
-.actions {
+nav.actions {
   width: 100%;
-  // padding: 2rem;
   display: flex;
   justify-content: space-evenly;
 }
 
-button.primary {
+a.primary {
+  @include button;
   background: $accent;
   color: $primary;
 }
 
-button.secondary {
+a.secondary {
+  @include button;
   background: transparent;
   color: $accent;
   border: 1px solid $accent;
