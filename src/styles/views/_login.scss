@@ -8,9 +8,9 @@ section.extra {
   & .keepSession {
     display: flex;
     align-items: center;
-    // & input[type="checkbox"] {
-
-    // }
+    & input[type="checkbox"] {
+      cursor: pointer;
+    }
     & label {
       margin-left: .5rem;
     }

@@ -1,14 +1,18 @@
-section.home {
+section#home {
   width: 100%;
   margin-bottom: 15vh;
   @include center;
   flex-direction: column;
-  & > * {
-    margin: 3rem 0;
-  }
 
   & h1 {
     font-size: 2.5rem;
+  }
+  & p {
+    margin: 1rem 2rem 3rem 2rem;
+    text-align: center;
+    line-height: 1.5em;
+    white-space: pre-line;
+    color: rgba($primary, .75);
   }
 }
 

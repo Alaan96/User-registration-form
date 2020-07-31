@@ -1,19 +1,36 @@
 <form action="" id="login-form">
   <header>
     <h1>Ingresá a tu cuenta</h1>
-    <span>Recuerda no poner información sensible.</span>
+    <p>Recuerda no poner información sensible.
+      En caso de tener una cuenta, <a href="/login">inicia sesión.</a></p>
   </header>
 
   <div class="text-field">
     <label for="login-email">Email</label>
-    <input type="email" id="login-email" name="login-email" placeholder="Escribe tu email" required autocomplete="off">
-    <span id="form-info-email">Información del email</span>
+    <input type="email" id="login-email" name="login-email" placeholder="Escribe tu email"
+      spellchecked="false" required autocomplete="email">
+    <span id="form-info-email">Debe ingresar un formato de email válido</span>
   </div>
 
   <div class="text-field">
     <label for="login-password">Contraseña</label>
-    <input type="password" id="login-password" name="login-password" placeholder="Escribe tu contraseña" required>
-    <span id="form-info-password">Información de la contraseña</span>
+    <input type="password" id="login-password" name="login-password" placeholder="Escribe tu contraseña"
+      spellcheck="false" required autocomplete="current-password">
+    <!-- Password reveal button -->
+    <button type="button" class="icon-btn" id="btn-password-reveal" tabindex="-1">
+      <input type="checkbox" name="password-reveal" id="password-reveal" tabindex="-1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18.828" viewBox="0 0 22 18.828" id="icon-eye">
+        <g transform="translate(-305 -438.086)">
+          <path d="M10,1.087c5.523,0,10,6,10,6s-4.477,6-10,6-10-6-10-6S4.477,1.087,10,1.087Z"
+            transform="translate(306 440.913)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+          <g transform="translate(311 443)" stroke-width="3">
+            <circle cx="5" cy="5" r="3.5" />
+          </g>
+          <line x2="16" y2="16" transform="translate(307.5 439.5)" stroke-linecap="round" stroke-width="2" />
+        </g>
+      </svg>
+    </button>
+    <span id="form-info-password">Solo caracteres alfanumericos</span>
   </div>
 
   <section class="extra">
@@ -26,7 +43,7 @@
   </section>
 
   <section class="buttons">
-    <button type="submit">Ingresar</button>
+    <button type="submit" disabled>Ingresar</button>
     <a href="/register">Registrarse</a>
   </section>
 </form>

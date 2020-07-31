@@ -1,30 +1,31 @@
 <form action="" id="register-form">
   <header>
     <h1>Crea una cuenta</h1>
-    <span>Recuerda no poner información sensible.</span>
+    <p>Recuerda no poner información sensible.
+      En caso de tener una cuenta, <a href="/login">inicia sesión.</a></p>
   </header>
 
   <div class="text-field">
     <label for="register-name">Nombre</label>
-    <input type="text" id="register-name" name="register-name"
-      placeholder="Escribe tu nombre" spellcheck="false" required>
+    <input type="text" id="register-name" name="register-name" placeholder="Escribe tu nombre"
+      spellcheck="false" required autocomplete="name">
     <span id="form-info-name">Ingrese un nombre válido</span>
   </div>
 
   <div class="text-field">
     <label for="register-email">Email</label>
-    <input type="email" id="register-email" name="register-email"
-      placeholder="Escribe tu email" spellcheck="false" required>
+    <input type="email" id="register-email" name="register-email" placeholder="Escribe tu email"
+      spellcheck="false" required autocomplete="email">
     <span id="form-info-email">Debe ingresar un formato de email válido</span>
   </div>
 
   <div class="text-field">
     <label for="register-password">Contraseña</label>
-    <input type="password" id="register-password" name="register-password"
-      placeholder="Escribe tu contraseña" spellcheck="false" required>
+    <input type="password" id="register-password" name="register-password" placeholder="Escribe tu contraseña"
+      spellcheck="false" required autocomplete="new-password">
     <!-- Password reveal button -->
-    <button type="button" class="icon-btn" id="password-reveal" tabindex="-1">
-      <input type="checkbox" name="register-password-reveal" id="register-password-reveal" tabindex="-1">
+    <button type="button" class="icon-btn" id="btn-password-reveal" tabindex="-1">
+      <input type="checkbox" name="password-reveal" id="password-reveal" tabindex="-1">
       <svg xmlns="http://www.w3.org/2000/svg" width="22" height="18.828" viewBox="0 0 22 18.828"
         id="icon-eye">
         <g transform="translate(-305 -438.086)">
@@ -43,7 +44,6 @@
 
   <section class="buttons">
     <button type="submit" disabled>Registrarse</button>
-    <a href="/login">Ingresar</a>
   </section>
 </form>
 

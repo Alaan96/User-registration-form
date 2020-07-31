@@ -1,9 +1,9 @@
-import Home from '../views/home.html'
-import Login from '../views/Login.html'
-import NewPassword from '../views/new-password.html'
 import Error404 from '../views/404.html'
 
+import renderHome from '../components/home'
 import renderRegister from '../components/register'
+import renderLogin from '../components/login'
+import renderNewPassword from '../components/new-password'
 
 const content = document.getElementById('content')
 
@@ -13,16 +13,16 @@ const render = (pathname = location.pathname) => {
 
   switch (pathname) {
     case '/':
-      content.innerHTML = Home
+      renderHome(content)
       break;
     case '/login':
-      content.innerHTML = Login
+      renderLogin(content)
       break;
     case '/register':
       renderRegister(content)
       break;
     case '/new-password':
-      content.innerHTML = NewPassword
+      renderNewPassword(content)
       break;
     default:
       content.innerHTML = Error404
