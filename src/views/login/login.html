@@ -1,8 +1,8 @@
-<form action="" id="login-form">
+<form action="" id="login-form" aria-label="Login form">
   <header>
     <h1>Ingresá a tu cuenta</h1>
     <p>Recuerda no poner información sensible.
-      En caso de tener una cuenta, <a href="/login">inicia sesión.</a></p>
+      En caso de no tener una cuenta,<a href="/register">regístrate</a>.</p>
   </header>
 
   <div class="text-field">
@@ -34,7 +34,7 @@
   </div>
 
   <section class="extra">
-    <div class="keepSession">
+    <div class="checkbox-keepSession" aria-label="Keep session">
       <input type="checkbox" id="login-keepSession">
       <label for="login-keepSession">Mantener sesión</label>
     </div>
@@ -44,7 +44,6 @@
 
   <section class="buttons">
     <button type="submit" disabled>Ingresar</button>
-    <a href="/register">Registrarse</a>
   </section>
 </form>
 

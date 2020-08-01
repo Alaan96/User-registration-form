@@ -1,5 +1,6 @@
 @import 'colors';
 @import 'fonts';
+@import 'animations';
 @import 'mixins';
 @import 'theme';
 
@@ -10,7 +11,6 @@
 // Views
 @import 'views/home';
 @import 'views/login';
-@import 'views/register';
 
 // Errors
 @import 'views/404';

@@ -6,6 +6,7 @@ section#home {
 
   & h1 {
     font-size: 2.5rem;
+    @include fade(2s);
   }
   & p {
     margin: 1rem 2rem 3rem 2rem;
@@ -13,6 +14,7 @@ section#home {
     line-height: 1.5em;
     white-space: pre-line;
     color: rgba($primary, .75);
+    @include fade(2s);
   }
 }
 
@@ -26,6 +28,8 @@ a.primary {
   @include button;
   background: $accent;
   color: $primary;
+  @include fade(1.75s, 1s);
+  animation-fill-mode: both;
 }
 
 a.secondary {
@@ -33,4 +37,6 @@ a.secondary {
   background: transparent;
   color: $accent;
   border: 1px solid $accent;
+  @include fade(1.75s, 1.5s);
+  animation-fill-mode: both;
 }

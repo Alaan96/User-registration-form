@@ -51,12 +51,23 @@ button {
 }
 
 a {
+  padding: .25em .5em;
+  display: inline-block;
   color: $accent;
-  // background: rgba($);
   font-size: inherit;
   font-weight: 600;
   text-decoration: none;
-  &:focus {
+  border-radius: .5rem;
+  &:focus, &:hover {
     outline: none;
+    background: rgba($secondary, .05);
+  }
+}
+
+div[class^="checkbox"] {
+  padding: .25em .5em;
+  border-radius: .5rem;
+  &:focus, &:hover {
+    background: rgba($secondary, .05);
   }
 }

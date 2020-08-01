@@ -1,4 +1,4 @@
-import NewPassword from '../views/new-password.html'
+import NewPassword from './new-password.html'
 
 export default (container) => {
   container.innerHTML = NewPassword

@@ -1,4 +1,4 @@
-import Home from '../views/home.html'
+import Home from './home.html'
 
 export default (container) => {
   container.innerHTML = Home

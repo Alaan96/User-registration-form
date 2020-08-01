@@ -1,9 +1,9 @@
 import Error404 from '../views/404.html'
 
-import renderHome from '../components/home'
-import renderRegister from '../components/register'
-import renderLogin from '../components/login'
-import renderNewPassword from '../components/new-password'
+import renderHome from '../views/home/home'
+import renderRegister from '../views/register/register'
+import renderLogin from '../views/login/login'
+import renderNewPassword from '../views/new-password/new-password'
 
 const content = document.getElementById('content')
 
