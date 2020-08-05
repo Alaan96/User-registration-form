@@ -1,11 +1,14 @@
 {
-  "name": "user-form",
+  "name": "user-registration-form",
   "version": "1.0.0",
-  "description": "A SPA with an accesible and responsive user form without JS frameworks.",
+  "description": "A SPA register form without JS frameworks, fully responsive and accesible.",
   "main": "index.js",
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Alaan96/User-registration-form/"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack -d",
     "build": "webpack",
     "serve": "webpack-dev-server"
