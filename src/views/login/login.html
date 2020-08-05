@@ -1,8 +1,8 @@
-<form action="" id="login-form" aria-label="Login form">
+<form id="login-form" aria-label="Login form">
   <header>
     <h1>Ingresá a tu cuenta</h1>
     <p>Recuerda no poner información sensible.
-      En caso de no tener una cuenta,<a href="/register">regístrate</a>.</p>
+      En caso de no tener una cuenta,<a href="/register">regístrate.</a></p>
   </header>
 
   <div class="text-field">
@@ -39,12 +39,14 @@
       <label for="login-keepSession">Mantener sesión</label>
     </div>
 
-    <a href="/new-password">¿Olvidaste tu contraseña?</a>
+    <a href="/request-newpassword">¿Olvidaste tu contraseña?</a>
   </section>
 
   <section class="buttons">
     <button type="submit" disabled>Ingresar</button>
   </section>
+
+  <section class="errors"></section>
 </form>
 
-<a href="/" class="back">Volver al inicio</a>
+<a href="/welcome" class="redirect">Volver al inicio</a>

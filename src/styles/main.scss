@@ -5,11 +5,14 @@
 @import 'theme';
 
 // Components
+@import 'components/loader';
 @import 'components/user-form';
 @import 'components/register-complete';
+@import 'components/redirect-message';
 
 // Views
 @import 'views/home';
+@import 'views/welcome';
 @import 'views/login';
 
 // Errors

@@ -5,6 +5,7 @@ form {
   color: $secondary;
   border-radius: .5rem;
   @include fade(1s);
+  transition: 1s ease-out;
 
   & label {
     display: inline;
@@ -86,16 +87,23 @@ section.buttons {
   }
 }
 
-a.back {
-  margin-top: 2rem;
+a.redirect {
   &:focus, &:hover {
     background: rgba($primary, .15);
   }
 }
 
-form ~ a.back {
+form ~ a.redirect {
+  margin-top: 2rem;
   @include fade(1s, .75s);
   animation-fill-mode: both;
+}
+
+section.errors p {
+  margin-top: .25rem;
+  color: $cancel;
+  font-size: .75rem;
+  @include fade(.5s);
 }
 
 // Password reveal button

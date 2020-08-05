@@ -1,3 +1,5 @@
+import render from '../../router'
+
 import Login from './login.html'
 
 export default (container) => {
@@ -7,11 +9,11 @@ export default (container) => {
   // Set form and inputs
   const loginForm = document.getElementById('login-form')
   const inputs = document.querySelectorAll('input:not([tabindex="-1"])')
-  const keepSessionBtn = inputs[inputs.length - 1]
+  // const keepSessionBtn = inputs[inputs.length - 1]
 
-  // Stored keepSession value
-  const keepSession = localStorage.getItem('keep-session')
-  if (keepSession !== undefined) keepSessionBtn.checked = keepSession
+   // Stored keepSession value
+  // const keepSession = localStorage.getItem('keep-session')
+  // if (keepSession !== undefined) keepSessionBtn.checked = keepSession
 
   // Declare data object
   let data = {
@@ -65,21 +67,55 @@ export default (container) => {
 
   // Send form data
   const send = data => {
-    console.log('Login...')
-    console.log(
-      `
-      Email: ${data.email}
-      Password: ${data.password}
-      `
-    )
+    console.log('Sending...')
 
-    // Go to /welcome
+    // Reset input values
+    inputs.forEach(input => {
+      input.value = ''
+    })
 
-    // container.innerHTML = RegisterComplete
+    // Verify user
+    const userExists = user => {
+      const promise = new Promise((resolve, reject) => {
+        if (!user) return reject('Hubo un problema con la petición.')
 
-    // setTimeout(() => {
-    //   render('/login')
-    // }, 3000)
+        const isRegistered = user => {
+          const registeredUser = localStorage.getItem(user.email)
+
+          if (!registeredUser) return false
+
+          // Validate passwords
+          const userDB = JSON.parse(registeredUser)
+          if (user.password !== userDB.password) return false
+
+          return true
+        }
+
+        if (!isRegistered(user)) return reject('Los datos ingresados son inválidos.')
+
+        localStorage.setItem('session-open', user.email)
+
+        resolve('Acceso permitido.')
+      })
+      return promise
+    }
+
+    const errorSection = document.querySelector('section.errors')
+
+    userExists(data)
+      .then( response => {
+        // console.log(response)
+        setTimeout(() => {
+          render('/')
+        }, 2000)
+      })
+      .catch( err => {
+        // Show error below the button
+        const errorElement = document.createElement('p')
+        errorElement.innerHTML = err
+        errorSection.append(errorElement)
+      })
+
   }
 
 
@@ -93,7 +129,7 @@ export default (container) => {
     const target = event.target
 
     // Input validations
-    if (target.tagName === 'INPUT' && target.pattern !== '') {
+    if (target.tagName === 'INPUT' && target.pattern !== '' && event.key !== 'Enter') {
       const name = target.name.split('-')[1] // formType-name
       const submitBtn = document.querySelector('button[type="submit"]')
 
@@ -113,11 +149,21 @@ export default (container) => {
 
       validInputs[name] = validation
 
+      const removeErrors = () => {
+        const errors = document.querySelectorAll('section.errors p')
+        if (errors) {
+          errors.forEach( err => {
+            err.parentNode.removeChild(err)
+          })
+        }
+      }
+
       // Active submit button
       if (formComplete(validInputs)) {
         submitBtn.disabled = false
       } else {
         submitBtn.disabled = true
+        removeErrors()
       }
     }
   })
@@ -128,8 +174,8 @@ export default (container) => {
     send(data)
   })
 
-  keepSessionBtn.addEventListener('change', event => {
-    localStorage.setItem('keep-session', event.target.checked)
-  })
+  // keepSessionBtn.addEventListener('change', event => {
+  //   localStorage.setItem('keep-session', event.target.checked)
+  // })
 
 }

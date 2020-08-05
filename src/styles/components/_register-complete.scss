@@ -1,8 +1,19 @@
+@keyframes slide {
+  0% {
+    transform: translateX(-8rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0rem);
+    opacity: 1;
+  }
+}
+
 section#register-complete {
   width: 100%;
   padding: 0 2rem;
   color: $primary;
-
+  animation: slide 1s ease;
 
   & header {
     margin-bottom: 1.5rem;
@@ -21,6 +32,8 @@ section#register-complete {
       flex: 0 1 5rem;
       fill: none;
       stroke: $primary;
+      animation: slide 1s ease .25s;
+      animation-fill-mode: both;
     }
   }
 }

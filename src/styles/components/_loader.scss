@@ -1,0 +1,44 @@
+#loader {
+  width: 100vw;
+  height: 100vh;
+  @include center;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  backdrop-filter: blur(4px);
+
+  & svg {
+    overflow: visible;
+  }
+
+  @for $i from 1 through 3 {
+    & circle:nth-child(#{$i}) {
+      fill: $primary;
+      stroke: none;
+      animation: dot-animation 1.5s ease #{$i / 4}s infinite alternate both;
+    }
+  }
+
+  & h2 {
+    margin-top: 1rem;
+    text-align: center;
+    color: $primary;
+    font-size: 1.5rem;
+    font-family: $raleway;
+    font-weight: 400;
+  }
+}
+
+@keyframes dot-animation {
+  0% {
+    opacity: 0.5;
+    transform: translateY(-1.5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0rem);
+  }
+}

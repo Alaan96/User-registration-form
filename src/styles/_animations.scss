@@ -6,3 +6,16 @@
 @mixin fade($time, $delay: 0s) {
   animation: fade $time ease-out $delay;
 }
+
+
+
+@keyframes slide-down {
+  from {
+    transform: translateY(2.5rem);
+    opacity: .25;
+  }
+  to {
+    transform: translateY(0rem);
+    opacity: 1;
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "user-form",
-  "version": "0.2.1",
+  "version": "1.0.0",
   "description": "A SPA with an accesible and responsive user form without JS frameworks.",
   "main": "index.js",
   "private": true,

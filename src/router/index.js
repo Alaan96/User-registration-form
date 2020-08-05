@@ -1,8 +1,10 @@
 import Error404 from '../views/404.html'
 
 import renderHome from '../views/home/home'
+import renderWelcome from '../views/welcome/welcome'
 import renderRegister from '../views/register/register'
 import renderLogin from '../views/login/login'
+import renderNewPasswordRequest from '../views/request-newpassword/request-newpassword'
 import renderNewPassword from '../views/new-password/new-password'
 
 const content = document.getElementById('content')
@@ -15,11 +17,17 @@ const render = (pathname = location.pathname) => {
     case '/':
       renderHome(content)
       break;
+    case '/welcome':
+      renderWelcome(content)
+      break;
     case '/login':
       renderLogin(content)
       break;
     case '/register':
       renderRegister(content)
+      break;
+    case '/request-newpassword':
+      renderNewPasswordRequest(content)
       break;
     case '/new-password':
       renderNewPassword(content)
@@ -31,19 +39,18 @@ const render = (pathname = location.pathname) => {
 
   const hyperlinks = Array.from(document.querySelectorAll('a'))
 
-  hyperlinks.forEach(link => {
-    link.addEventListener('click', (event) => {
-      event.preventDefault()
-      render(event.target.pathname)
+  if (hyperlinks) {
+    hyperlinks.forEach(link => {
+      link.addEventListener('click', (event) => {
+        event.preventDefault()
+        render(event.target.pathname)
+      })
     })
-  })
+  }
 }
 
 window.onpopstate = () => {
   render()
 }
-
-// Execute first render
-render()
 
 export default render

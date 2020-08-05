@@ -67,19 +67,47 @@ export default (container) => {
   // Send form data
   const send = data => {
     console.log('Sending...')
-    console.log(
-      `
-      Name: ${data.name}
-      Email: ${data.email}
-      Password: ${data.password}
-      `
-    )
 
-    container.innerHTML = RegisterComplete
+    // Reset input values
+    inputs.forEach( input => {
+      input.value = ''
+    })
 
-    setTimeout(()=> {
-      render('/login')
-    }, 3000)
+    // Save user into localStorage
+    const saveUser = user => {
+      const promise = new Promise( (resolve, reject) => {
+
+        if (!user) reject('No se han podido guardar los datos.')
+
+        const isRegistered = email => {
+          const registeredUser = localStorage.getItem(email)
+
+          if (!registeredUser) return false
+          return true
+        }
+
+        if (isRegistered(user.email)) reject('El usuario ya existe.')
+
+        localStorage.setItem(data.email, JSON.stringify(user))
+        resolve('Usuario registrado existosamente.')
+
+      })
+
+      return promise
+    }
+
+    saveUser(data)
+      .then( response => {
+        console.log(response)
+        container.innerHTML = RegisterComplete
+
+        setTimeout(() => {
+          render('/login')
+        }, 3000)
+      })
+      .catch( err => {
+        console.warn(err)
+      })
   }
   
 
@@ -112,6 +140,21 @@ export default (container) => {
       }
 
       validInputs[name] = validation
+
+      // Check if email is already registered
+      const emailRegistered = email => {
+        if (!localStorage.getItem(email)) return false
+        return true
+      }
+      
+      const emailInfoBelowInput = document.getElementById('form-info-email')
+      if (emailRegistered(data.email)) {
+        validInputs.email = false
+        emailInfoBelowInput.style.visibility = 'visible'
+        emailInfoBelowInput.textContent = 'Email ya registrado.'
+      } else if (!emailRegistered(data.email)){
+        emailInfoBelowInput.textContent = 'Debe ingresar un formato de email válido'
+      }
 
       // Active submit button
       if (formComplete(validInputs)) {

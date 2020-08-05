@@ -1,4 +1,4 @@
-section#home {
+section#welcome {
   width: 100%;
   margin-bottom: 15vh;
   @include center;
@@ -18,20 +18,23 @@ section#home {
   }
 }
 
-a[data-action="logout"] {
+nav.actions {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+a.primary {
   @include button;
-  color: $cancel;
-  background: transparent;
-  border: 1px solid $cancel;
-  @include fade(2s);
-  &:hover {
-    box-shadow: 0 0 .5rem $cancel;
-  }
-  &:active {
-    box-shadow: 0 0 1rem $cancel;
-  }
-  &:focus {
-    outline: none;
-    box-shadow: 0 0 .5rem $cancel;
-  }
+  color: $primary;
+  background: $accent;
+  @include fade(1s, 1s);
+  animation-fill-mode: both;
+}
+
+a.secondary {
+  @include button;
+  border: 2px solid $accent;
+  @include fade(1s, 1.5s);
+  animation-fill-mode: both;
 }

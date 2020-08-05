@@ -2,4 +2,7 @@
 import './styles/main.scss'
 
 // Router
-import './router'
+import render from './router'
+
+// Execute first render
+render()
