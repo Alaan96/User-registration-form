@@ -4,6 +4,9 @@ A SPA user form without JS frameworks, fully responsive and accesible.
 
 ## Gallery
 
+![View-1](https://raw.githubusercontent.com/Alaan96/User-registration-form/master/src/assets/demo/Views%201.png)
+![View-1](https://raw.githubusercontent.com/Alaan96/User-registration-form/master/src/assets/demo/Views%202.png)
+
 ## Local preview
 
 - Clone or download the project
