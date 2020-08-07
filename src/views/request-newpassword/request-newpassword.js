@@ -1,10 +1,10 @@
+import View from '../../components/view'
+import NewPasswordView from './request-newpassword.html'
+
 import render from '../../router'
 
-import NewPassword from './request-newpassword.html'
-
 export default (container) => {
-  container.innerHTML = NewPassword
-  document.title = 'Solicitud para nueva contraseña'
+  new View('Solicitud para nueva contraseña', NewPasswordView, container).render()
 
   // Email input
   const recoveryForm = document.getElementById('recovery-form')

@@ -5,18 +5,19 @@ import render from '../../router'
 
 export default (container) => {
 
-  const Home = new PrivateView('Inicio', HomeView, container)
+  const Home = new PrivateView('Inicio', HomeView, container, 'session')
+  
+  Home.render()
 
   Home.haveAccess()
     .then((res) => {
+      console.log(res)
       Home.Loader.end('Acceso permitido')
       const title = document.querySelector('h1')
       const user = JSON.parse(localStorage.getItem(res.session))
-
-      title.textContent += ` ${user.name}`
+      if (title) title.textContent += ` ${user.name}`
 
       const logoutBtn = document.querySelector('a[data-action="logout"]')
-
       if (logoutBtn) {
         logoutBtn.addEventListener('click', event => {
           event.preventDefault()
@@ -27,7 +28,8 @@ export default (container) => {
         })
       }
     })
-    .catch(() => {
+    .catch((err) => {
+      console.log(err)
       setTimeout(() => {
         Home.Loader.end('Acceso denegado')
         render('/welcome')

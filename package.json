@@ -1,6 +1,6 @@
 {
   "name": "user-registration-form",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A SPA register form without JS frameworks, fully responsive and accesible.",
   "main": "index.js",
   "private": true,

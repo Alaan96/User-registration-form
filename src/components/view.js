@@ -5,11 +5,9 @@ class View {
     this.title = title
     this.content = content
     this.container = container
-
-    this.renderView()
   }
 
-  renderView() {
+  render() {
     if (this.title && this.content && this.container) {
       console.log(`Rendering view: ${this.title}`)
       document.title = this.title
@@ -19,31 +17,47 @@ class View {
 }
 
 
-
 class PrivateView extends View {
-  constructor(title, content, container) {
+  constructor(title, content, container, authentication) {
     super(title, content, container)
-    this.Loader = new Loader()
 
+    this.authentication = authentication
+
+    this.Loader = new Loader()
     this.Loader.init('Verificando acceso')
   }
 
-  renderView() {
-    this.haveAccess()
-      .then((res) => {
-        console.log(res.message)
-        console.log(`Rendering private view: ${this.title}`)
-        
-        document.title = this.title
-        this.container.innerHTML = this.content
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
+  render() {
+    if (this.authentication === 'session') {
+      this.haveAccess()
+        .then((res) => {
+          console.log(res.message)
+          console.log(`Rendering private view: ${this.title}`)
+
+          document.title = this.title
+          this.container.innerHTML = this.content
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+    } else if (this.authentication === 'password-change') {
+      debugger
+      this.passwordChangeAccess()
+        .then((res) => {
+          console.log(res.message)
+          console.log(`Rendering private view: ${this.title}`)
+
+          document.title = this.title
+          this.container.innerHTML = this.content
+        })
+        .catch((err) => {
+          console.log(err.message)
+        })
+    }
   }
 
   haveAccess() {
-    const access = new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
       const sessionOpen = localStorage.getItem('session-open')
 
       if (!sessionOpen) {
@@ -60,8 +74,25 @@ class PrivateView extends View {
         session: sessionOpen,
       })
     })
+  }
+  passwordChangeAccess() {
+    return new Promise((resolve, reject) => {
+      const emailForChange = localStorage.getItem('password-request-for')
 
-    return access
+      if (!emailForChange) {
+        return reject({
+          success: false,
+          message: 'Access denied.',
+          email: emailForChange,
+        })
+      }
+
+      return resolve({
+        success: true,
+        message: 'Access allowed.',
+        email: emailForChange,
+      })
+    })
   }
 }
 

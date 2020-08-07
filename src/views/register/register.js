@@ -1,11 +1,12 @@
+import View from '../../components/view'
+import RegisterView from './register.html'
+
 import render from '../../router'
 
-import Register from './register.html'
 import RegisterComplete from '../../components/register-complete.html'
 
 export default (container) => {
-  container.innerHTML = Register
-  document.title = 'Formulario de registro'
+  new View('Formulario de registro', RegisterView, container).render()
 
   // Set form element and inputs
   const registerForm = document.getElementById('register-form')

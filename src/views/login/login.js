@@ -1,10 +1,10 @@
+import View from '../../components/view'
+import LoginView from './login.html'
+
 import render from '../../router'
 
-import Login from './login.html'
-
 export default (container) => {
-  container.innerHTML = Login
-  document.title = 'Formulario de inicio de sesión'
+  new View('Formulario de inicio de sesión', LoginView, container).render()
 
   // Set form and inputs
   const loginForm = document.getElementById('login-form')
@@ -107,7 +107,7 @@ export default (container) => {
         // console.log(response)
         setTimeout(() => {
           render('/')
-        }, 2000)
+        }, 1500)
       })
       .catch( err => {
         // Show error below the button
