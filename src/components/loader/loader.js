@@ -1,26 +1,30 @@
-import Loader from './loader.html'
+import LoaderView from './loader.html'
 
-const load = (text = 'Verificando acceso') => {
-  const loaderElement = document.createElement('div')
-  loaderElement.setAttribute('id', 'loader')
-  loaderElement.innerHTML = Loader
+export default class Loader {
+  constructor() {
+    this.loader = document.createElement('div')
+    this.loader.setAttribute('id', 'loader')
+    this.loader.innerHTML = LoaderView
 
-  // Set loader
-  document.body.prepend(loaderElement)
+    this.textElement
 
-  // Set text
-  const textContainer = document.querySelector('#loader h2')
-  textContainer.textContent = text
-}
-
-const loaded = () => {
-  const loaderElement = document.getElementById('loader')
-  if (loaderElement) {
-    document.body.removeChild(loaderElement)
+    this.onScreen = false
   }
-}
 
-export default {
-  load,
-  loaded
+  init(message) {
+    // Set as first child in body
+    document.body.prepend(this.loader)
+    this.onScreen = true
+
+    this.textElement = document.querySelector('#loader h2')
+    this.textElement.textContent = message
+  }
+
+  end(message) {
+    this.textElement.textContent = message
+    setTimeout(() => {
+      if (this.onScreen) document.body.removeChild(this.loader)
+      this.onScreen = false
+    }, 800)
+  }
 }

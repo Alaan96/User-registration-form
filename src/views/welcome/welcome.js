@@ -1,6 +1,7 @@
+import View from '../../components/view';
+
 import Welcome from './welcome.html'
 
 export default (container) => {
-  container.innerHTML = Welcome
-  document.title = 'Bienvenido'
+  new View('Bienvenido', Welcome, container)
 }

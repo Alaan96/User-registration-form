@@ -1,4 +1,4 @@
-import Error404 from '../views/404.html'
+import renderError404 from '../views/error/error'
 
 import renderHome from '../views/home/home'
 import renderWelcome from '../views/welcome/welcome'
@@ -33,7 +33,7 @@ const render = (pathname = location.pathname) => {
       renderNewPassword(content)
       break;
     default:
-      content.innerHTML = Error404
+      renderError404(content)
       break;
   }
 

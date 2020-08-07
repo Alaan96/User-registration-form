@@ -1,42 +1,36 @@
+import { PrivateView } from '../../components/view'
+import HomeView from './home.html'
+
 import render from '../../router'
 
-import Home from './home.html'
-
-import Loader from '../../components/loader/loader'
-
 export default (container) => {
-  document.title = 'Inicio'
 
-  // // Validate session
-  const sessionOpen = localStorage.getItem('session-open')
-  if (!sessionOpen) {
-    Loader.load()
-    const fetchTime = Math.trunc((Math.random() + .8) * 1000)
+  const Home = new PrivateView('Inicio', HomeView, container)
 
-    // Remove loader
-    setTimeout(() => {
-      Loader.loaded()
-      render('/welcome')
-    }, 3000)
-    return
-  }
+  Home.haveAccess()
+    .then((res) => {
+      Home.Loader.end('Acceso permitido')
+      const title = document.querySelector('h1')
+      const user = JSON.parse(localStorage.getItem(res.session))
 
-  container.innerHTML = Home
+      title.textContent += ` ${user.name}`
 
-  const title = document.querySelector('h1')
-  const user = JSON.parse(localStorage.getItem(sessionOpen))
+      const logoutBtn = document.querySelector('a[data-action="logout"]')
 
-  title.textContent += ` ${user.name}`
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', event => {
+          event.preventDefault()
 
-  const logoutBtn = document.querySelector('a[data-action="logout"]')
+          localStorage.removeItem('session-open')
 
-  if (logoutBtn) {
-    logoutBtn.addEventListener('click', event => {
-      event.preventDefault()
-
-      localStorage.removeItem('session-open')
-
-      render('/')
+          render('/')
+        })
+      }
     })
-  }
+    .catch(() => {
+      setTimeout(() => {
+        Home.Loader.end('Acceso denegado')
+        render('/welcome')
+      }, 1500)
+    })
 }
