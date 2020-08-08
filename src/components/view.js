@@ -41,7 +41,6 @@ class PrivateView extends View {
           console.log(err.message)
         })
     } else if (this.authentication === 'password-change') {
-      debugger
       this.passwordChangeAccess()
         .then((res) => {
           console.log(res.message)
